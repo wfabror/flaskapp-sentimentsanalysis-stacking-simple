@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container fluid">
+        <div class="justify-center">
+
+            <br>
+            <h1>
+                Hasil Preprocessing
+            </h1>
+            <br>
+            <div class="card mt-2">
+                <div class="card-header text-center">
+                    <b>
+                        Cleansing Process
+                    </b>
+                </div>
+                <div class="card-body">
+                    {{ cleansing | safe }}
+
+                </div>
+            </div>
+            <div class="card mt-2">
+                <div class="card-header text-center">
+                    <b>
+                        Case Folding Process
+                    </b>
+                </div>
+                <div class="card-body">
+                    {{ casefolding | safe }}
+                </div>
+            </div>
+            <div class="card mt-2">
+                <div class="card-header text-center">
+                    <b>
+                        Normalize Text Process
+                    </b>
+                </div>
+                <div class="card-body">
+                    {{ normalize_text | safe }}
+                </div>
+            </div>
+            <div class="card mt-2">
+                <div class="card-header text-center">
+                    <b>
+                        Tokenization Process
+                    </b>
+                </div>
+                <div class="card-body">
+                    {{ tokenization | safe }}
+                </div>
+            </div>
+            <div class="card mt-2">
+                <div class="card-header text-center">
+                    <b>
+                        Stopword Removal Process
+                    </b>
+                </div>
+                <div class="card-body">
+                    {{ stopword_removal | safe }}
+                </div>
+            </div>
+            <div class="card mt-2">
+                <div class="card-header text-center">
+                    <b>
+                        Translated Process
+                    </b>
+                </div>
+                <div class="card-body">
+                    {{ translated | safe }}
+                </div>
+            </div>
+            <div class="card mt-2">
+                <div class="card-header text-center">
+                    <b>
+                        Scoring (Labelling) Process
+                    </b>
+                </div>
+                <div class="card-body">
+                    {{ scoring | safe }}
+                </div>
+            </div>
+            
+            <br>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+ntlk
+seaborn
+numpy
+pandas
+scikit-learn
+textblob
+deep_translator
+imbalanced-learn
+sastrawi

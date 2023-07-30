@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container fluid">
+        <div class="justify-center">
+
+            <br>
+            <h1>
+                Hasil Pemodelan dan Akurasi
+            </h1>
+            
+            <br>
+            <div class="row">
+                <div class="col-sm-6 mt-2">
+                    <div class="card">
+                        <div class="card-header">
+                            Random Forest
+                        </div>
+                        <div class="card-body">
+                            Accuracy: {{ rf }}%
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mt-2">
+                    <div class="card">
+                        <div class="card-header">
+                            Naive Bayes
+                        </div>
+                        <div class="card-body">
+                            Accuracy: {{ nb }}%
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mt-2">
+                    <div class="card">
+                        <div class="card-header">
+                            Support Vector Machine
+                        </div>
+                        <div class="card-body">
+                            Accuracy: {{ svm }}%
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mt-2">
+                    <div class="card"> 
+                        <div class="card-header">
+                            Stacking
+                        </div>    
+                        <div class="card-body">
+                            Accuracy: {{ stc }}%
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-2">
+                <div class="card-header text-center">
+                    Accuracy Score
+                </div>
+                <div class="card-body">
+                    <canvas id="Chard" width="100" height="50"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block scripts %}
+    <script>
+        const xValues = ['RF', 'NB', 'SVM', 'Stacking'];
+        const yValues = [{{rf}}, {{nb}}, {{svm}}, {{stc}}];
+        
+        let ctx = document.getElementById('Chard').getContext('2d');
+        let myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: xValues,
+            datasets: [{
+                label: 'Accuracy %',
+                data: yValues,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: false
+                }
+            }
+        }
+    });
+        </script>
+        
+    {% endblock %}
+{% endblock %}
+
